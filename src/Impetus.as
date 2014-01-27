@@ -5,11 +5,15 @@ package io.github.jwhile.impetus
 
     public class Impetus extends Sprite
     {
+        private sounds:Vector.<ImpetusSound>;
+
         public function Impetus():void
         {
+            sounds = new Vector.<ImpetusSound>();
+
             if(ExternalInterface.available)
             {
-                ExternalInterface.addCallback('getPlayer', getPlayer);
+                ExternalInterface.addCallback('getSound', getSound);
 
                 ExternalInterface.call("console.log", "Impetus loaded. (https://github.com/JWhile/Impetus)");
             }
