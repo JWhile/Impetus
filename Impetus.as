@@ -9,11 +9,11 @@ package io.github.jwhile.impetus
 
         public function Impetus():void
         {
-            sounds = new Vector.<ImpetusSound>();
+            this.sounds = new Vector.<ImpetusSound>();
 
             if(ExternalInterface.available)
             {
-                ExternalInterface.addCallback('getSound', getSound);
+                ExternalInterface.addCallback('getSound', this.getSound);
 
                 ExternalInterface.call("console.log", "Impetus loaded. (https://github.com/JWhile/Impetus)");
             }
@@ -21,19 +21,19 @@ package io.github.jwhile.impetus
 
         public function getSound(url:String)
         {
-            var len:int = sounds.length;
+            var len:int = this.sounds.length;
 
             for(var i:int = 0; i < len; i++)
             {
-                if(sounds[i].getUrl() === url)
+                if(this.sounds[i].getUrl() === url)
                 {
-                    return sounds[i];
+                    return this.sounds[i];
                 }
             }
 
-            var s:ImpetusSound = new ImpetusSound();
+            var s:ImpetusSound = new ImpetusSound(url);
 
-            sounds.push(s);
+            this.sounds.push(s);
 
             return s;
         }
