@@ -1,11 +1,11 @@
-package io.github.jwhile.impetus
+package
 {
     import flash.display.Sprite;
     import flash.external.ExternalInterface;
 
     public class Impetus extends Sprite
     {
-        private sounds:Vector.<ImpetusSound>;
+        private var sounds:Vector.<ImpetusSound>;
 
         public function Impetus():void
         {

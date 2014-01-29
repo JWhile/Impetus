@@ -1,10 +1,10 @@
-package io.github.jwhile.impetus
+package
 {
     import flash.media.SoundChannel;
 
     public class ImpetusChannel
     {
-        this.channel:SoundChannel;
+        private var channel:SoundChannel;
 
         public function ImpetusChannel(channel:SoundChannel):void
         {

@@ -1,4 +1,4 @@
-package io.github.jwhile.impetus
+package
 {
     import flash.media.Sound;
     import flash.net.URLRequest;
@@ -33,7 +33,7 @@ package io.github.jwhile.impetus
 
             for(var i:int; i < len; i++)
             {
-                this.sounds[i].stop();
+                this.channels[i].stop();
             }
         }
     }
