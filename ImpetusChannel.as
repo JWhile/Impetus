@@ -10,5 +10,10 @@ package io.github.jwhile.impetus
         {
             this.channel = channel;
         }
+
+        public function stop():void
+        {
+            this.channel.stop();
+        }
     }
 }

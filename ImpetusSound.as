@@ -26,5 +26,15 @@ package io.github.jwhile.impetus
 
             return c;
         }
+
+        public function stopAll():void
+        {
+            var len:int = this.channels.length;
+
+            for(var i:int; i < len; i++)
+            {
+                this.sounds[i].stop();
+            }
+        }
     }
 }
