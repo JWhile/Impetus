@@ -20,7 +20,7 @@ package
             this.sound.load(new URLRequest(url));
         }
 
-        public function get getUrl():String
+        public function getUrl():String
         {
             return this.url
         }
