@@ -18,5 +18,14 @@ package io.github.jwhile.impetus
 
             this.sound.load(new URLRequest(url));
         }
-    } 
+
+        public function playNew():SoundChannel
+        {
+            var c:SoundChannel = this.sound.play(0);
+
+            channels.push(c);
+
+            return c;
+        }
+    }
 }
