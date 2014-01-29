@@ -5,17 +5,24 @@ package
 
     public class ImpetusSound
     {
+        private var url:String;
         private var sound:Sound;
 
         private var channels:Vector.<ImpetusChannel>;
 
         public function ImpetusSound(url:String):void
         {
+            this.url = url;
             this.sound = new Sound();
 
             this.channels = new Vector.<ImpetusChannel>;
 
             this.sound.load(new URLRequest(url));
+        }
+
+        public function get getUrl():String
+        {
+            return this.url
         }
 
         public function playNew():ImpetusChannel
