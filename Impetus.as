@@ -19,7 +19,7 @@ package io.github.jwhile.impetus
             }
         }
 
-        public function getSound(url:String)
+        public function getSound(url:String):ImpetusSound
         {
             var len:int = this.sounds.length;
 
