@@ -13,14 +13,18 @@ package
 
             if(ExternalInterface.available)
             {
-                ExternalInterface.addCallback('getSound', this.getSound);
                 ExternalInterface.addCallback('playNew', this.playNew);
 
                 ExternalInterface.call("console.log", "Impetus loaded. (https://github.com/JWhile/Impetus)");
             }
         }
 
-        public function getSound(url:String):ImpetusSound
+        public function playNew(url:String):void
+        {
+            this.getSound(url).playNew();
+        }
+
+        private function getSound(url:String):ImpetusSound
         {
             var len:int = this.sounds.length;
 
@@ -37,11 +41,6 @@ package
             this.sounds.push(s);
 
             return s;
-        }
-
-        public function playNew(url:String):void
-        {
-            this.getSound(url).playNew();
         }
     }
 }
