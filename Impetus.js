@@ -1,5 +1,5 @@
 
-var Impetus;
+var Impetus = {};
 
 (function(){ // namespace
 
@@ -55,8 +55,8 @@ var sounds = [];
 // var flash:Builder
 var flash = null;
 
-// static var loaded:boolean
-Impetus.loaded = false;
+// static var isLoaded:boolean
+Impetus.isLoaded = false;
 
 // static function Impetus.getSound(String url):ImpetusSound
 Impetus.getSound = function(url)
@@ -79,7 +79,7 @@ Impetus.getSound = function(url)
 // static function Impetus._flashLoadedCallback():void
 Impetus._flashLoadedCallback = function()
 {
-    Impetus.loaded = true;
+    Impetus.isLoaded = true;
 };
 
 // main
@@ -92,5 +92,6 @@ flash = new Builder('object')
     .append(new Builder('param')
         .set('name', 'allowScriptAccess')
         .set('value', 'always'))
+    .insert(document.body);
 
 })();
