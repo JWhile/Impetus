@@ -1,26 +1,7 @@
 
-// class Impetus
-function Impetus()
-{
-    this.sounds = []; // :Array<ImpetusSound>
-}
-// function getSound(String url):ImpetusSound
-Impetus.prototype.getSound = function(url)
-{
-    for(var i = 0; i < this.sounds.length; ++i)
-    {
-        if(sounds[i].url === url)
-        {
-            return sounds[i];
-        }
-    }
+var Impetus;
 
-    var s = new ImpetusSound(url);
-
-    this.sounds.push(s);
-
-    return s;
-};
+(function(){ // namespace
 
 // class ImpetusSound
 function ImpetusSound(url)
@@ -67,3 +48,26 @@ ImpetusChannel.prototype.setPos = function(pos)
 ImpetusChannel.prototype.getPos = function()
 {
 };
+
+// var:Array<ImpetusSound>
+var sounds = [];
+
+// static function Impetus.getSound(String url):ImpetusSound
+Impetus.getSound = function(url)
+{
+    for(var i = 0; i < sounds.length; ++i)
+    {
+        if(sounds[i].url === url)
+        {
+            return sounds[i];
+        }
+    }
+
+    var s = new ImpetusSound(url);
+
+    sounds.push(s);
+
+    return s;
+};
+
+})();
