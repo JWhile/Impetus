@@ -8,12 +8,12 @@ function ImpetusSound(url)
 {
     this.url = url; // :String
 
-    this.channels =[]; // :Array<ImpetusChannel>
+    this.channels = []; // :Array<ImpetusChannel>
 }
 // function playNew():ImpetusChannel
 ImpetusSound.prototype.playNew = function()
 {
-    var c = new ImpetusChannel(0);
+    var c = new ImpetusChannel(flash.playNew(this.url), this);
 
     this.channels.push(c);
 
@@ -29,8 +29,10 @@ ImpetusSound.prototype.stopAll = function()
 };
 
 // class ImpetusChannel
-function ImpetusChannel(id)
+function ImpetusChannel(id, sound)
 {
+    this.sound = sound; // :ImpetusSound
+
     this.id = id; // :int
 }
 // function play():void
@@ -40,6 +42,7 @@ ImpetusChannel.prototype.play = function()
 // function stop():void
 ImpetusChannel.prototype.stop = function()
 {
+    flash.stopChannel(this.sound.url, this.id);
 };
 // function setPos(int pos):void
 ImpetusChannel.prototype.setPos = function(pos)
@@ -53,7 +56,7 @@ ImpetusChannel.prototype.getPos = function()
 // var sounds:Array<ImpetusSound>
 var sounds = [];
 
-// var flash:Builder
+// var flash:HTMLObjectElement
 var flash = null;
 
 // static var isLoaded:boolean
@@ -93,6 +96,7 @@ flash = new Builder('object')
     .append(new Builder('param')
         .set('name', 'allowScriptAccess')
         .set('value', 'always'))
-    .insert(document.body);
+    .insert(document.body)
+    .node;
 
 })();
