@@ -15,7 +15,7 @@ package
             {
                 ExternalInterface.addCallback('playNew', this.playNew);
 
-                ExternalInterface.call("console.log", "Impetus loaded. (https://github.com/JWhile/Impetus)");
+                ExternalInterface.call("Impetus._flashLoadedCallback");
             }
         }
 

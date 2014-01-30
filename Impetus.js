@@ -55,6 +55,9 @@ var sounds = [];
 // var flash:Builder
 var flash = null;
 
+// static var loaded:boolean
+Impetus.loaded = false;
+
 // static function Impetus.getSound(String url):ImpetusSound
 Impetus.getSound = function(url)
 {
@@ -71,6 +74,12 @@ Impetus.getSound = function(url)
     sounds.push(s);
 
     return s;
+};
+
+// static function Impetus._flashLoadedCallback():void
+Impetus._flashLoadedCallback = function()
+{
+    Impetus.loaded = true;
 };
 
 // main
