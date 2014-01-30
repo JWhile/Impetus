@@ -2,7 +2,7 @@
 // class Impetus
 function Impetus()
 {
-    this.sounds = [];
+    this.sounds = []; // :Array<ImpetusSound>
 }
 // function getSound(String url):ImpetusSound
 Impetus.prototype.getSound = function(url)
@@ -26,14 +26,25 @@ Impetus.prototype.getSound = function(url)
 function ImpetusSound(url)
 {
     this.url = url; // :String
+
+    this.channels =[]; // :Array<ImpetusChannel>
 }
 // function playNew():ImpetusChannel
 ImpetusSound.prototype.playNew = function()
 {
+    var c = new ImpetusChannel();
+
+    this.channels.push(c);
+
+    return c;
 };
 // function stopAll():void
 ImpetusSound.prototype.stopAll = function()
 {
+    for(var i = 0; i < this.channels.length; ++i)
+    {
+        channels[i].stop();
+    }
 };
 
 // class ImpetusChannel
