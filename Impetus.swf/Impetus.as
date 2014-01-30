@@ -19,9 +19,9 @@ package
             }
         }
 
-        public function playNew(url:String):void
+        public function playNew(url:String):int
         {
-            this.getSound(url).playNew();
+            return this.getSound(url).playNew().getId();
         }
 
         private function getSound(url:String):ImpetusSound

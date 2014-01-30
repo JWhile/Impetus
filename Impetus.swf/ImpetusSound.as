@@ -10,12 +10,16 @@ package
 
         private var channels:Vector.<ImpetusChannel>;
 
+        private var channelId;
+
         public function ImpetusSound(url:String):void
         {
             this.url = url;
             this.sound = new Sound();
 
             this.channels = new Vector.<ImpetusChannel>;
+
+            this.channelId = 0;
 
             this.sound.load(new URLRequest(url));
         }
@@ -27,9 +31,10 @@ package
 
         public function playNew():ImpetusChannel
         {
-            var c:ImpetusChannel = new ImpetusChannel(this.sound.play(0));
+            var c:ImpetusChannel = new ImpetusChannel(this.channelId, this.sound.play(0));
 
-            channels.push(c);
+            this.channels.push(c);
+            this.channelId++;
 
             return c;
         }

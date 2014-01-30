@@ -13,7 +13,7 @@ function ImpetusSound(url)
 // function playNew():ImpetusChannel
 ImpetusSound.prototype.playNew = function()
 {
-    var c = new ImpetusChannel();
+    var c = new ImpetusChannel(0);
 
     this.channels.push(c);
 
@@ -29,8 +29,9 @@ ImpetusSound.prototype.stopAll = function()
 };
 
 // class ImpetusChannel
-function ImpetusChannel()
+function ImpetusChannel(id)
 {
+    this.id = id; // :int
 }
 // function play():void
 ImpetusChannel.prototype.play = function()
