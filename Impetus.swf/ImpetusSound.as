@@ -29,6 +29,21 @@ package
             return this.url
         }
 
+        public function get(id:int):ImpetusChannel
+        {
+            var len:int = this.channels.length;
+
+            for(var i:int = 0; i < len; i++)
+            {
+                if(this.channels[i].getId() === id)
+                {
+                    return this.channels[i];
+                }
+            }
+
+            return null;
+        }
+
         public function playNew():ImpetusChannel
         {
             var c:ImpetusChannel = new ImpetusChannel(this.channelId, this.sound.play(0));
@@ -37,16 +52,6 @@ package
             this.channelId++;
 
             return c;
-        }
-
-        public function stopAll():void
-        {
-            var len:int = this.channels.length;
-
-            for(var i:int; i < len; i++)
-            {
-                this.channels[i].stop();
-            }
         }
     }
 }
