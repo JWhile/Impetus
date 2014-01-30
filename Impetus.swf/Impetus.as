@@ -14,6 +14,7 @@ package
             if(ExternalInterface.available)
             {
                 ExternalInterface.addCallback('playNew', this.playNew);
+                ExternalInterface.addCallback('playChannel', this.playChannel);
                 ExternalInterface.addCallback('stopChannel', this.stopChannel);
 
                 ExternalInterface.call("Impetus._flashLoadedCallback");
@@ -23,6 +24,16 @@ package
         public function playNew(url:String):int
         {
             return this.getSound(url).playNew().getId();
+        }
+
+        public function playChannel(url:String, id:int):void
+        {
+            var c:ImpetusChannel = this.getSound(url).get(id);
+
+            if(c != null)
+            {
+                c.play();
+            }
         }
 
         public function stopChannel(url:String, id:int):void

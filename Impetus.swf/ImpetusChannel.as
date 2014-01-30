@@ -20,6 +20,10 @@ package
             return this.id;
         }
 
+        public function play():void
+        {
+        }
+
         public function stop():void
         {
             this.channel.stop();

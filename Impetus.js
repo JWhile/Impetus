@@ -38,6 +38,7 @@ function ImpetusChannel(id, sound)
 // function play():void
 ImpetusChannel.prototype.play = function()
 {
+    flash.playChannel(this.sound.url, this.id);
 };
 // function stop():void
 ImpetusChannel.prototype.stop = function()
