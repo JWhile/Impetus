@@ -32,5 +32,9 @@ package
         public function setPos(pos:int):void
         {
         }
+
+        public function getPos():int
+        {
+        }
     }
 }

@@ -53,6 +53,7 @@ ImpetusChannel.prototype.setPos = function(pos)
 // function getPos():int
 ImpetusChannel.prototype.getPos = function()
 {
+    return flash.getPosChannel(this.sound.url, this.id);
 };
 
 // var sounds:Array<ImpetusSound>

@@ -17,6 +17,7 @@ package
                 ExternalInterface.addCallback('playChannel', this.playChannel);
                 ExternalInterface.addCallback('stopChannel', this.stopChannel);
                 ExternalInterface.addCallback('setPosChannel', this.setPosChannel);
+                ExternalInterface.addCallback('getPosChannel', this.getPosChannel);
 
                 ExternalInterface.call("Impetus._flashLoadedCallback");
             }
@@ -55,6 +56,18 @@ package
             {
                 c.setPos(pos);
             }
+        }
+
+        public function getPosChannel(url:String, id:int):int
+        {
+            var c:ImpetusChannel = this.getSound(url).get(id);
+
+            if(c != null)
+            {
+                return c.getPos();
+            }
+
+            return -1;
         }
 
         private function getSound(url:String):ImpetusSound
