@@ -48,6 +48,7 @@ ImpetusChannel.prototype.stop = function()
 // function setPos(int pos):void
 ImpetusChannel.prototype.setPos = function(pos)
 {
+    flash.setPosChannel(this.sound.url, this.id, pos);
 };
 // function getPos():int
 ImpetusChannel.prototype.getPos = function()

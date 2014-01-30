@@ -28,5 +28,9 @@ package
         {
             this.channel.stop();
         }
+
+        public function setPos(pos:int):void
+        {
+        }
     }
 }
