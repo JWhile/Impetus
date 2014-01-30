@@ -49,8 +49,11 @@ ImpetusChannel.prototype.getPos = function()
 {
 };
 
-// var:Array<ImpetusSound>
+// var sounds:Array<ImpetusSound>
 var sounds = [];
+
+// var flash:Builder
+var flash = null;
 
 // static function Impetus.getSound(String url):ImpetusSound
 Impetus.getSound = function(url)
@@ -69,5 +72,16 @@ Impetus.getSound = function(url)
 
     return s;
 };
+
+// main
+flash = new Builder('object')
+    .set('id', 'impetus_flash')
+    .set('type', 'application/x-shockwave-flash')
+    .append(new Builder('param')
+        .set('name', 'movie')
+        .set('value', 'Impetus.swf'))
+    .append(new Builder('param')
+        .set('name', 'allowScriptAccess')
+        .set('value', 'always'))
 
 })();
