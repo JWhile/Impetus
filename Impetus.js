@@ -2,10 +2,24 @@
 // class Impetus
 function Impetus()
 {
+    this.sounds = [];
 }
 // function getSound(String url):ImpetusSound
 Impetus.prototype.getSound = function(url)
 {
+    for(var i = 0; i < this.sounds.length; ++i)
+    {
+        if(sounds[i].url === url)
+        {
+            return sounds[i];
+        }
+    }
+
+    var s = new ImpetusSound(url);
+
+    this.sounds.push(s);
+
+    return s;
 };
 
 // class ImpetusSound
