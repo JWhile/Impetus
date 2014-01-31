@@ -48,7 +48,7 @@ package
             }
         }
 
-        public function setPosChannel(url:String, id:int, int pos):void
+        public function setPosChannel(url:String, id:int, pos:int):void
         {
             var c:ImpetusChannel = this.getSound(url).get(id);
 
