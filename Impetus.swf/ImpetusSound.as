@@ -2,6 +2,7 @@ package
 {
     import flash.media.Sound;
     import flash.media.SoundChannel;
+    import flash.media.SoundTransform;
     import flash.net.URLRequest;
 
     public class ImpetusSound

@@ -36,7 +36,7 @@ package
             }
         }
 
-        public function setDefaultVolume(volume:Number, all:boolean = false):void
+        public function setDefaultVolume(volume:Number, all:Boolean = false):void
         {
             this.defaultVolume = volume;
 
@@ -51,7 +51,7 @@ package
             }
         }
 
-        public function setDefaultBalance(balance:Number, all:boolean = false):void
+        public function setDefaultBalance(balance:Number, all:Boolean = false):void
         {
             this.defaultBalance = balance;
 
