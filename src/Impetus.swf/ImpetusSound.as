@@ -74,21 +74,11 @@ package
             this.updateTransform();
         }
 
-        public function getVolume():Number
-        {
-            return this.volume;
-        }
-
         public function setBalance(balance:Number):void
         {
             this.balance = balance;
 
             this.updateTransform();
-        }
-
-        public function getBalance():Number
-        {
-            return this.balance;
         }
 
         private function updateTransform():void

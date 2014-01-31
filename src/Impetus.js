@@ -33,20 +33,10 @@ ImpetusSound.prototype.setVolume = function(volume)
 {
     flash.setSoundVolume(this.url, volume);
 };
-// function getVolume():int
-ImpetusSound.prototype.getVolume = function()
-{
-    return flash.getSoundVolume(this.url);
-};
 // function setBalance(int balance):void
 ImpetusSound.prototype.setBalance = function(balance)
 {
     flash.setSoundBalance(this.url, balance);
-};
-// function getBalance():int
-ImpetusSound.prototype.getBalance = function()
-{
-    return flash.getSoundBalance(this.url);
 };
 
 // var sounds:Array<ImpetusSound>

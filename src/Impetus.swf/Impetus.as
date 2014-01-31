@@ -26,10 +26,8 @@ package
                 ExternalInterface.addCallback('getSoundPeak', this.getSoundPeak);
 
                 ExternalInterface.addCallback('setSoundVolume', this.setSoundVolume);
-                ExternalInterface.addCallback('getSoundVolume', this.getSoundVolume);
 
                 ExternalInterface.addCallback('setSoundBalance', this.setSoundBalance);
-                ExternalInterface.addCallback('getSoundBalance', this.getSoundBalance);
 
                 ExternalInterface.addCallback('setDefaultVolume', this.setDefaultVolume);
                 ExternalInterface.addCallback('setDefaultBalance', this.setDefaultBalance);
@@ -112,19 +110,9 @@ package
             this.getSound(url).setVolume(volume);
         }
 
-        private function getSoundVolume(url:String):Number
-        {
-            return this.getSound(url).getVolume();
-        }
-
         private function setSoundBalance(url:String, balance:Number):void
         {
             this.getSound(url).setBalance(balance);
-        }
-
-        private function getSoundBalance(url:String):Number
-        {
-            return this.getSound(url).getBalance();
         }
     }
 }
