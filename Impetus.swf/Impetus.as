@@ -20,6 +20,8 @@ package
                 ExternalInterface.addCallback('playSound', this.playSound);
                 ExternalInterface.addCallback('stopSound', this.stopSound);
                 ExternalInterface.addCallback('getSoundPos', this.getSoundPos);
+                ExternalInterface.addCallback('setSoundVolume', this.setSoundVolume);
+                ExternalInterface.addCallback('getSoundVolume', this.getSoundVolume);
                 ExternalInterface.addCallback('setDefaultVolume', this.setDefaultVolume);
 
                 ExternalInterface.call("Impetus._flashLoadedCallback");
@@ -73,6 +75,16 @@ package
         private function getSoundPos(url:String):int
         {
             return this.getSound(url).getPos();
+        }
+
+        private function setSoundVolume(url:String, volume:int):void
+        {
+            this.getSound(url).setVolume(volume);
+        }
+
+        private function getSoundVolume(url:String):int
+        {
+            return this.getSound(url).getVolume();
         }
     }
 }
