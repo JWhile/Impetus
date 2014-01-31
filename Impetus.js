@@ -61,6 +61,12 @@ Impetus.getSound = function(url)
     return s;
 };
 
+// static function Impetus.setDefaultVolume(int volume, boolean all = false):void
+Impetus.setDefaultVolume = function(volume, all)
+{
+    flash.setDefaultVolume(volume / 100, all);
+};
+
 // static function Impetus.load():void
 Impetus.load = function()
 {
