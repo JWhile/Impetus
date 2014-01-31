@@ -28,46 +28,24 @@ package
             return this.getSound(url).playNew().getId();
         }
 
-        public function playChannel(url:String, id:int):void
+        public function playChannel(url:String):void
         {
-            var c:ImpetusChannel = this.getSound(url).get(id);
-
-            if(c != null)
-            {
-                c.play();
-            }
+            this.getSound(url).play();
         }
 
-        public function stopChannel(url:String, id:int):void
+        public function stopChannel(url:String):void
         {
-            var c:ImpetusChannel = this.getSound(url).get(id);
-
-            if(c != null)
-            {
-                c.stop();
-            }
+            this.getSound(url).stop();
         }
 
-        public function setPosChannel(url:String, id:int, pos:int):void
+        public function setPosChannel(url:String, pos:int):void
         {
-            var c:ImpetusChannel = this.getSound(url).get(id);
-
-            if(c != null)
-            {
-                c.setPos(pos);
-            }
+            this.getSound(url).setPos(pos);
         }
 
         public function getPosChannel(url:String, id:int):int
         {
-            var c:ImpetusChannel = this.getSound(url).get(id);
-
-            if(c != null)
-            {
-                return c.getPos();
-            }
-
-            return -1;
+            return this.getSound(url).getPos();
         }
 
         private function getSound(url:String):ImpetusSound

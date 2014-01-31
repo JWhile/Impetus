@@ -1,6 +1,7 @@
 package
 {
     import flash.media.Sound;
+    import flash.media.SoundChannel;
     import flash.net.URLRequest;
 
     public class ImpetusSound
@@ -8,20 +9,16 @@ package
         private var url:String;
         private var sound:Sound;
 
-        private var channels:Vector.<ImpetusChannel>;
-
-        private var channelId;
+        private var channel:SoundChannel;
 
         public function ImpetusSound(url:String):void
         {
             this.url = url;
             this.sound = new Sound();
 
-            this.channels = new Vector.<ImpetusChannel>;
-
-            this.channelId = 0;
-
             this.sound.load(new URLRequest(url));
+
+            this.channel = null;
         }
 
         public function getUrl():String
@@ -29,29 +26,23 @@ package
             return this.url
         }
 
-        public function get(id:int):ImpetusChannel
+        public function play():void
         {
-            var len:int = this.channels.length;
-
-            for(var i:int = 0; i < len; i++)
-            {
-                if(this.channels[i].getId() === id)
-                {
-                    return this.channels[i];
-                }
-            }
-
-            return null;
         }
 
-        public function playNew():ImpetusChannel
+        public function stop():void
         {
-            var c:ImpetusChannel = new ImpetusChannel(this.channelId, this.sound.play(0));
+            this.channel.stop();
 
-            this.channels.push(c);
-            this.channelId++;
+            this.channel = null;
+        }
 
-            return c;
+        public function setPos(pos:int):void
+        {
+        }
+
+        public function getPos():int
+        {
         }
     }
 }
