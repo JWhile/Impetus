@@ -89,6 +89,8 @@ Impetus.setDefaultBalance = function(balance, all)
 // static function Impetus.load(callback:function = null):void
 Impetus.load = function(callback)
 {
+    loadCallback = callback;
+
     flash = new Builder('object')
         .set('id', 'impetus_flash')
         .set('type', 'application/x-shockwave-flash')
@@ -100,8 +102,6 @@ Impetus.load = function(callback)
             .set('value', 'always'))
         .insert(document.body)
         .node;
-
-    loadCallback = callback;
 };
 
 // static function Impetus._flashLoadedCallback():void
