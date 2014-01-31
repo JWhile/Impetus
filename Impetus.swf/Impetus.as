@@ -26,9 +26,19 @@ package
             }
         }
 
-        public function setDefaultVolume(volume:int):void
+        public function setDefaultVolume(volume:int, all:boolean = false):void
         {
             this.defaultVolume = volume;
+
+            if(all)
+            {
+                var len:int = this.sounds.length;
+
+                for(var i:int = 0; i < len; i++)
+                {
+                    this.sounds[i].setVolume(volume);
+                }
+            }
         }
 
         public function getSound(url:String):ImpetusSound
