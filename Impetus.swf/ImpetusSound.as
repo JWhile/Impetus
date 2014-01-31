@@ -12,6 +12,7 @@ package
         private var channel:SoundChannel;
 
         private var volume:int;
+        private var balance:int;
 
         public function ImpetusSound(url:String, defaultVolume:int):void
         {
@@ -38,7 +39,8 @@ package
             }
 
             this.channel = sound.play(pos);
-            this.channel.soundTransform = new SoundTransform(this.volume, 0);
+
+            this.updateTransform();
         }
 
         public function stop():void
@@ -57,12 +59,29 @@ package
         {
             this.volume = volume;
 
-            this.channel.soundTransform = new SoundTransform(this.volume, 0);
+            this.updateTransform();
         }
 
         public function getVolume():int
         {
             return this.volume;
+        }
+
+        public function setBalance(balance:int):void
+        {
+            this.balance = balance;
+
+            this.updateTransform();
+        }
+
+        public function getBalance():int
+        {
+            return this.balance;
+        }
+
+        private function updateTransform():void
+        {
+            this.channel.soundTransform = new SoundTransform(this.volume, this.balance);
         }
     }
 }
