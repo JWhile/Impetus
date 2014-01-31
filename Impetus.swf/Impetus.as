@@ -7,8 +7,8 @@ package
     {
         private var sounds:Vector.<ImpetusSound>;
 
-        private var defaultVolume:int;
-        private var defaultBalance:int;
+        private var defaultVolume:Number;
+        private var defaultBalance:Number;
 
         public function Impetus():void
         {
@@ -22,10 +22,13 @@ package
                 ExternalInterface.addCallback('playSound', this.playSound);
                 ExternalInterface.addCallback('stopSound', this.stopSound);
                 ExternalInterface.addCallback('getSoundPos', this.getSoundPos);
+
                 ExternalInterface.addCallback('setSoundVolume', this.setSoundVolume);
                 ExternalInterface.addCallback('getSoundVolume', this.getSoundVolume);
+
                 ExternalInterface.addCallback('setSoundBalance', this.setSoundBalance);
                 ExternalInterface.addCallback('getSoundBalance', this.getSoundBalance);
+
                 ExternalInterface.addCallback('setDefaultVolume', this.setDefaultVolume);
                 ExternalInterface.addCallback('setDefaultBalance', this.setDefaultBalance);
 
@@ -33,7 +36,7 @@ package
             }
         }
 
-        public function setDefaultVolume(volume:int, all:boolean = false):void
+        public function setDefaultVolume(volume:Number, all:boolean = false):void
         {
             this.defaultVolume = volume;
 
@@ -48,7 +51,7 @@ package
             }
         }
 
-        public function setDefaultBalance(balance:int, all:boolean = false):void
+        public function setDefaultBalance(balance:Number, all:boolean = false):void
         {
             this.defaultBalance = balance;
 
@@ -97,22 +100,22 @@ package
             return this.getSound(url).getPos();
         }
 
-        private function setSoundVolume(url:String, volume:int):void
+        private function setSoundVolume(url:String, volume:Number):void
         {
             this.getSound(url).setVolume(volume);
         }
 
-        private function getSoundVolume(url:String):int
+        private function getSoundVolume(url:String):Number
         {
             return this.getSound(url).getVolume();
         }
 
-        private function setSoundBalance(url:String, balance:int):void
+        private function setSoundBalance(url:String, balance:Number):void
         {
             this.getSound(url).setBalance(balance);
         }
 
-        private function getSoundBalance(url:String):int
+        private function getSoundBalance(url:String):Number
         {
             return this.getSound(url).getBalance();
         }
