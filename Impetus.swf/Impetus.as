@@ -7,9 +7,13 @@ package
     {
         private var sounds:Vector.<ImpetusSound>;
 
+        private var defaultVolume:int;
+
         public function Impetus():void
         {
             this.sounds = new Vector.<ImpetusSound>();
+
+            this.defaultVolume = 1;
 
             if(ExternalInterface.available)
             {
@@ -36,6 +40,11 @@ package
             return this.getSound(url).getPos();
         }
 
+        public function setDefaultVolume(volume:int):void
+        {
+            this.defaultVolume = volume;
+        }
+
         private function getSound(url:String):ImpetusSound
         {
             var len:int = this.sounds.length;
@@ -48,7 +57,7 @@ package
                 }
             }
 
-            var s:ImpetusSound = new ImpetusSound(url);
+            var s:ImpetusSound = new ImpetusSound(url, this.defaultVolume);
 
             this.sounds.push(s);
 

@@ -11,7 +11,9 @@ package
 
         private var channel:SoundChannel;
 
-        public function ImpetusSound(url:String):void
+        private var volume:int;
+
+        public function ImpetusSound(url:String, defaultVolume:int):void
         {
             this.url = url;
             this.sound = new Sound();
@@ -19,6 +21,8 @@ package
             this.sound.load(new URLRequest(url));
 
             this.channel = null;
+
+            this.volume = defaultVolume;
         }
 
         public function getUrl():String
@@ -46,6 +50,16 @@ package
         public function getPos():int
         {
             return (this.channel != null)? channel.position : -1;
+        }
+
+        public function setVolume(volume:int):void
+        {
+            this.volume = volume;
+        }
+
+        public function getVolume():int
+        {
+            return this.volume;
         }
     }
 }
