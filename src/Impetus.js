@@ -23,6 +23,11 @@ ImpetusSound.prototype.getPos = function()
 {
     return flash.getSoundPos(this.url);
 };
+// function getPeak():Object
+ImpetusSound.prototype.getPeak = function()
+{
+    return flash.getSoundPeak(this.url);
+};
 // function setVolume(int volume):void
 ImpetusSound.prototype.setVolume = function(volume)
 {

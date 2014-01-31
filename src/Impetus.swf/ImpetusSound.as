@@ -57,6 +57,16 @@ package
             return (this.channel != null)? channel.position : -1;
         }
 
+        public function getPeak():Object
+        {
+            return {
+                left: (this.channel != null)? this.channel.leftPeak : 0,
+                right: (this.channel != null)? this.channel.rightPeak : 0,
+                volume: this.volume,
+                balance: this.balance
+            };
+        }
+
         public function setVolume(volume:Number):void
         {
             this.volume = volume;
