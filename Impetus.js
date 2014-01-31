@@ -51,23 +51,26 @@ Impetus.getSound = function(url)
     return s;
 };
 
+// static function Impetus.load():void
+Impetus.load = function()
+{
+    flash = new Builder('object')
+        .set('id', 'impetus_flash')
+        .set('type', 'application/x-shockwave-flash')
+        .append(new Builder('param')
+            .set('name', 'movie')
+            .set('value', 'Impetus.swf'))
+        .append(new Builder('param')
+            .set('name', 'allowScriptAccess')
+            .set('value', 'always'))
+        .insert(document.body)
+        .node;
+};
+
 // static function Impetus._flashLoadedCallback():void
 Impetus._flashLoadedCallback = function()
 {
     Impetus.isLoaded = true;
 };
-
-// main
-flash = new Builder('object')
-    .set('id', 'impetus_flash')
-    .set('type', 'application/x-shockwave-flash')
-    .append(new Builder('param')
-        .set('name', 'movie')
-        .set('value', 'Impetus.swf'))
-    .append(new Builder('param')
-        .set('name', 'allowScriptAccess')
-        .set('value', 'always'))
-    .insert(document.body)
-    .node;
 
 })();
