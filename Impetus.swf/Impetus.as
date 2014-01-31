@@ -8,12 +8,14 @@ package
         private var sounds:Vector.<ImpetusSound>;
 
         private var defaultVolume:int;
+        private var defaultBalance:int;
 
         public function Impetus():void
         {
             this.sounds = new Vector.<ImpetusSound>();
 
             this.defaultVolume = 1;
+            this.defaultBalance = 0;
 
             if(ExternalInterface.available)
             {
@@ -22,7 +24,10 @@ package
                 ExternalInterface.addCallback('getSoundPos', this.getSoundPos);
                 ExternalInterface.addCallback('setSoundVolume', this.setSoundVolume);
                 ExternalInterface.addCallback('getSoundVolume', this.getSoundVolume);
+                ExternalInterface.addCallback('setSoundBalance', this.setSoundBalance);
+                ExternalInterface.addCallback('getSoundBalance', this.getSoundBalance);
                 ExternalInterface.addCallback('setDefaultVolume', this.setDefaultVolume);
+                ExternalInterface.addCallback('setDefaultBalance', this.setDefaultBalance);
 
                 ExternalInterface.call("Impetus._flashLoadedCallback");
             }
@@ -43,6 +48,21 @@ package
             }
         }
 
+        public function setDefaultBalance(balance:int, all:boolean = false):void
+        {
+            this.defaultBalance = balance;
+
+            if(all)
+            {
+                var len:int = this.sounds.length;
+
+                for(var i:int = 0; i < len; i++)
+                {
+                    this.sounds[i].setBalance(balance);
+                }
+            }
+        }
+
         public function getSound(url:String):ImpetusSound
         {
             var len:int = this.sounds.length;
@@ -55,7 +75,7 @@ package
                 }
             }
 
-            var s:ImpetusSound = new ImpetusSound(url, this.defaultVolume);
+            var s:ImpetusSound = new ImpetusSound(url, this.defaultVolume, this.defaultBalance);
 
             this.sounds.push(s);
 
@@ -85,6 +105,16 @@ package
         private function getSoundVolume(url:String):int
         {
             return this.getSound(url).getVolume();
+        }
+
+        private function setSoundBalance(url:String, balance:int):void
+        {
+            this.getSound(url).setBalance(balance);
+        }
+
+        private function getSoundBalance(url:String):int
+        {
+            return this.getSound(url).getBalance();
         }
     }
 }

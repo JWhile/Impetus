@@ -33,6 +33,16 @@ ImpetusSound.prototype.getVolume = function()
 {
     return flash.getSoundVolume(this.url);
 };
+// function setBalance(int balance):void
+ImpetusSound.prototype.setBalance = function(balance)
+{
+    flash.setSoundBalance(this.url, balance);
+};
+// function getBalance():int
+ImpetusSound.prototype.getBalance = function()
+{
+    return flash.getSoundBalance(this.url);
+};
 
 // var sounds:Array<ImpetusSound>
 var sounds = [];
@@ -65,6 +75,12 @@ Impetus.getSound = function(url)
 Impetus.setDefaultVolume = function(volume, all)
 {
     flash.setDefaultVolume(volume / 100, all);
+};
+
+// static function Impetus.setDefaultBalance(int balance, boolean all = false):void
+Impetus.setDefaultBalance = function(balance, all)
+{
+    flash.setDefaultBalance(balance / 100, all);
 };
 
 // static function Impetus.load():void

@@ -14,7 +14,7 @@ package
         private var volume:int;
         private var balance:int;
 
-        public function ImpetusSound(url:String, defaultVolume:int):void
+        public function ImpetusSound(url:String, defaultVolume:int, defaultBalance:int):void
         {
             this.url = url;
             this.sound = new Sound();
@@ -24,6 +24,7 @@ package
             this.channel = null;
 
             this.volume = defaultVolume;
+            this.balance = defaultBalance;
         }
 
         public function getUrl():String
