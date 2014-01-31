@@ -38,6 +38,7 @@ package
             }
 
             this.channel = sound.play(pos);
+            this.channel.soundTransform = new SoundTransform(this.volume, 0);
         }
 
         public function stop():void
@@ -55,6 +56,8 @@ package
         public function setVolume(volume:int):void
         {
             this.volume = volume;
+
+            this.channel.soundTransform = new SoundTransform(this.volume, 0);
         }
 
         public function getVolume():int
