@@ -26,14 +26,14 @@ package
             return this.url
         }
 
-        public function play():void
+        public function play(pos:int = 0):void
         {
             if(this.channel != null)
             {
                 this.channel.stop();
             }
 
-            this.channel = sound.play(0);
+            this.channel = sound.play(pos);
         }
 
         public function stop():void
@@ -41,10 +41,6 @@ package
             this.channel.stop();
 
             this.channel = null;
-        }
-
-        public function setPos(pos:int):void
-        {
         }
 
         public function getPos():int

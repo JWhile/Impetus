@@ -9,24 +9,19 @@ function ImpetusSound(url)
     this.url = url; // :String
 }
 // function play():void
-ImpetusSound.prototype.play = function()
+ImpetusSound.prototype.play = function(pos)
 {
-    flash.playChannel(this.sound.url, this.id);
+    flash.playChannel(this.sound.url, pos);
 };
 // function stop():void
 ImpetusSound.prototype.stop = function()
 {
-    flash.stopChannel(this.sound.url, this.id);
-};
-// function setPos(int pos):void
-ImpetusSound.prototype.setPos = function(pos)
-{
-    flash.setPosChannel(this.sound.url, this.id, pos);
+    flash.stopChannel(this.sound.url);
 };
 // function getPos():int
 ImpetusSound.prototype.getPos = function()
 {
-    return flash.getPosChannel(this.sound.url, this.id);
+    return flash.getPosChannel(this.sound.url);
 };
 
 // var sounds:Array<ImpetusSound>
