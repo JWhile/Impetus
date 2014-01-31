@@ -1,6 +1,6 @@
 # Impetus
 
-_v0.1.1 alpha_
+_v0.1.2 alpha_
 
 Moteur audio en AS3/JS.
 _Simple, performent, souple, compatible._

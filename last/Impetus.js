@@ -8,6 +8,11 @@ function ImpetusSound(url)
 {
     this.url = url; // :String
 }
+// function getInfo():Object
+ImpetusSound.prototype.getInfo = function()
+{
+    return flash.getSoundInfo(this.url);
+};
 // function play():void
 ImpetusSound.prototype.play = function(pos)
 {
@@ -81,22 +86,28 @@ Impetus.setDefaultBalance = function(balance, all)
     flash.setDefaultBalance(balance / 100, all);
 };
 
-// static function Impetus.load(String swfUrl, function callback = null):void
+// static function Impetus.load(String swfUrl, function callback = null):Builder
 Impetus.load = function(swfUrl, callback)
 {
     loadCallback = callback;
 
+    var div = new Builder('div');
+
     flash = new Builder('object')
         .set('id', 'impetus_flash')
         .set('type', 'application/x-shockwave-flash')
+        .set('width', '100%')
+        .set('height', '100%')
         .append(new Builder('param')
             .set('name', 'movie')
             .set('value', swfUrl))
         .append(new Builder('param')
             .set('name', 'allowScriptAccess')
             .set('value', 'always'))
-        .insert(document.body)
+        .insert(div)
         .node;
+
+    return div;
 };
 
 // static function Impetus._flashLoadedCallback():void
