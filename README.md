@@ -1,6 +1,9 @@
 # Impetus
 
-Moteur audio en AS3 pour du Javascript.
+_v0.1.0 alpha_
+
+Moteur audio en AS3/JS.
+_Simple, performent, souple, compatible._
 
 ### License
 
