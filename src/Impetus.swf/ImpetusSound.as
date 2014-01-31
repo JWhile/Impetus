@@ -1,5 +1,6 @@
 package
 {
+    import flash.media.ID3Info
     import flash.media.Sound;
     import flash.media.SoundChannel;
     import flash.media.SoundTransform;
@@ -31,6 +32,11 @@ package
         public function getUrl():String
         {
             return this.url
+        }
+
+        public function getInfo():ID3Info
+        {
+            return this.sound.id3;
         }
 
         public function play(pos:int):void

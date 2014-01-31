@@ -2,6 +2,7 @@ package
 {
     import flash.display.Sprite;
     import flash.external.ExternalInterface;
+    import flash.media.ID3Info;
 
     public class Impetus extends Sprite
     {
@@ -19,6 +20,8 @@ package
 
             if(ExternalInterface.available)
             {
+                ExternalInterface.addCallback('getSoundInfo', this.getSoundInfo);
+
                 ExternalInterface.addCallback('playSound', this.playSound);
                 ExternalInterface.addCallback('stopSound', this.stopSound);
 
@@ -83,6 +86,11 @@ package
             this.sounds.push(s);
 
             return s;
+        }
+
+        private function getSoundInfo(url:String):ID3Info
+        {
+            return this.getSound(url).getInfo();
         }
 
         private function playSound(url:String, pos:int = 0):void

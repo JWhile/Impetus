@@ -8,6 +8,11 @@ function ImpetusSound(url)
 {
     this.url = url; // :String
 }
+// function getInfo():Object
+ImpetusSound.prototype.getInfo = function()
+{
+    return flash.getSoundInfo(this.url);
+};
 // function play():void
 ImpetusSound.prototype.play = function(pos)
 {
