@@ -11,17 +11,17 @@ function ImpetusSound(url)
 // function play():void
 ImpetusSound.prototype.play = function(pos)
 {
-    flash.playSound(this.sound.url, pos);
+    flash.playSound(this.url, pos);
 };
 // function stop():void
 ImpetusSound.prototype.stop = function()
 {
-    flash.stopSound(this.sound.url);
+    flash.stopSound(this.url);
 };
 // function getPos():int
 ImpetusSound.prototype.getPos = function()
 {
-    return flash.getSoundPos(this.sound.url);
+    return flash.getSoundPos(this.url);
 };
 
 // var sounds:Array<ImpetusSound>
