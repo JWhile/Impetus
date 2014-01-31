@@ -7,51 +7,24 @@ var Impetus = {};
 function ImpetusSound(url)
 {
     this.url = url; // :String
-
-    this.channels = []; // :Array<ImpetusChannel>
-}
-// function playNew():ImpetusChannel
-ImpetusSound.prototype.playNew = function()
-{
-    var c = new ImpetusChannel(flash.playNew(this.url), this);
-
-    this.channels.push(c);
-
-    return c;
-};
-// function stopAll():void
-ImpetusSound.prototype.stopAll = function()
-{
-    for(var i = 0; i < this.channels.length; ++i)
-    {
-        channels[i].stop();
-    }
-};
-
-// class ImpetusChannel
-function ImpetusChannel(id, sound)
-{
-    this.sound = sound; // :ImpetusSound
-
-    this.id = id; // :int
 }
 // function play():void
-ImpetusChannel.prototype.play = function()
+ImpetusSound.prototype.play = function()
 {
     flash.playChannel(this.sound.url, this.id);
 };
 // function stop():void
-ImpetusChannel.prototype.stop = function()
+ImpetusSound.prototype.stop = function()
 {
     flash.stopChannel(this.sound.url, this.id);
 };
 // function setPos(int pos):void
-ImpetusChannel.prototype.setPos = function(pos)
+ImpetusSound.prototype.setPos = function(pos)
 {
     flash.setPosChannel(this.sound.url, this.id, pos);
 };
 // function getPos():int
-ImpetusChannel.prototype.getPos = function()
+ImpetusSound.prototype.getPos = function()
 {
     return flash.getPosChannel(this.sound.url, this.id);
 };
