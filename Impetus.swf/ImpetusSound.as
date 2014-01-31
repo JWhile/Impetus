@@ -45,6 +45,7 @@ package
 
         public function getPos():int
         {
+            return (this.channel != null)? channel.position : -1;
         }
     }
 }
