@@ -23,25 +23,20 @@ ImpetusSound.prototype.getPos = function()
 {
     return flash.getSoundPos(this.url);
 };
+// function getPeak():Object
+ImpetusSound.prototype.getPeak = function()
+{
+    return flash.getSoundPeak(this.url);
+};
 // function setVolume(int volume):void
 ImpetusSound.prototype.setVolume = function(volume)
 {
     flash.setSoundVolume(this.url, volume);
 };
-// function getVolume():int
-ImpetusSound.prototype.getVolume = function()
-{
-    return flash.getSoundVolume(this.url);
-};
 // function setBalance(int balance):void
 ImpetusSound.prototype.setBalance = function(balance)
 {
     flash.setSoundBalance(this.url, balance);
-};
-// function getBalance():int
-ImpetusSound.prototype.getBalance = function()
-{
-    return flash.getSoundBalance(this.url);
 };
 
 // var sounds:Array<ImpetusSound>
@@ -86,8 +81,8 @@ Impetus.setDefaultBalance = function(balance, all)
     flash.setDefaultBalance(balance / 100, all);
 };
 
-// static function Impetus.load(callback:function = null):void
-Impetus.load = function(callback)
+// static function Impetus.load(String swfUrl, function callback = null):void
+Impetus.load = function(swfUrl, callback)
 {
     loadCallback = callback;
 
@@ -96,7 +91,7 @@ Impetus.load = function(callback)
         .set('type', 'application/x-shockwave-flash')
         .append(new Builder('param')
             .set('name', 'movie')
-            .set('value', 'Impetus.swf'))
+            .set('value', swfUrl))
         .append(new Builder('param')
             .set('name', 'allowScriptAccess')
             .set('value', 'always'))
