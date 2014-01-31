@@ -54,7 +54,7 @@ package
 
         public function getPos():int
         {
-            return (this.channel != null)? channel.position : -1;
+            return (this.channel != null)? channel.position : 0;
         }
 
         public function getPeak():Object
