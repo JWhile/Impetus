@@ -50,6 +50,9 @@ var sounds = [];
 // var flash:HTMLObjectElement
 var flash = null;
 
+// var loadCallback:function
+var loadCallback = null;
+
 // static var isLoaded:boolean
 Impetus.isLoaded = false;
 
@@ -83,8 +86,8 @@ Impetus.setDefaultBalance = function(balance, all)
     flash.setDefaultBalance(balance / 100, all);
 };
 
-// static function Impetus.load():void
-Impetus.load = function()
+// static function Impetus.load(callback:function = null):void
+Impetus.load = function(callback)
 {
     flash = new Builder('object')
         .set('id', 'impetus_flash')
@@ -97,12 +100,19 @@ Impetus.load = function()
             .set('value', 'always'))
         .insert(document.body)
         .node;
+
+    loadCallback = callback;
 };
 
 // static function Impetus._flashLoadedCallback():void
 Impetus._flashLoadedCallback = function()
 {
     Impetus.isLoaded = true;
+
+    if(typeof loadCallback === 'function')
+    {
+        loadCallback();
+    }
 };
 
 })();
