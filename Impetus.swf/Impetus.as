@@ -20,24 +20,10 @@ package
                 ExternalInterface.addCallback('playSound', this.playSound);
                 ExternalInterface.addCallback('stopSound', this.stopSound);
                 ExternalInterface.addCallback('getSoundPos', this.getSoundPos);
+                ExternalInterface.addCallback('setDefaultVolume', this.setDefaultVolume);
 
                 ExternalInterface.call("Impetus._flashLoadedCallback");
             }
-        }
-
-        public function playSound(url:String, pos:int = 0):void
-        {
-            this.getSound(url).play(pos);
-        }
-
-        public function stopSound(url:String):void
-        {
-            this.getSound(url).stop();
-        }
-
-        public function getSoundPos(url:String):int
-        {
-            return this.getSound(url).getPos();
         }
 
         public function setDefaultVolume(volume:int):void
@@ -45,7 +31,7 @@ package
             this.defaultVolume = volume;
         }
 
-        private function getSound(url:String):ImpetusSound
+        public function getSound(url:String):ImpetusSound
         {
             var len:int = this.sounds.length;
 
@@ -62,6 +48,21 @@ package
             this.sounds.push(s);
 
             return s;
+        }
+
+        private function playSound(url:String, pos:int = 0):void
+        {
+            this.getSound(url).play(pos);
+        }
+
+        private function stopSound(url:String):void
+        {
+            this.getSound(url).stop();
+        }
+
+        private function getSoundPos(url:String):int
+        {
+            return this.getSound(url).getPos();
         }
     }
 }
