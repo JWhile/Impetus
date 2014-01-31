@@ -28,6 +28,12 @@ package
 
         public function play():void
         {
+            if(this.channel != null)
+            {
+                this.channel.stop();
+            }
+
+            this.channel = sound.play(0);
         }
 
         public function stop():void
