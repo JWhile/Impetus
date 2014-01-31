@@ -26,7 +26,7 @@ package
             return this.url
         }
 
-        public function play(pos:int = 0):void
+        public function play(pos:int):void
         {
             if(this.channel != null)
             {

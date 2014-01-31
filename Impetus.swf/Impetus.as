@@ -13,37 +13,25 @@ package
 
             if(ExternalInterface.available)
             {
-                ExternalInterface.addCallback('playNew', this.playNew);
-                ExternalInterface.addCallback('playChannel', this.playChannel);
-                ExternalInterface.addCallback('stopChannel', this.stopChannel);
-                ExternalInterface.addCallback('setPosChannel', this.setPosChannel);
-                ExternalInterface.addCallback('getPosChannel', this.getPosChannel);
+                ExternalInterface.addCallback('playSound', this.playSound);
+                ExternalInterface.addCallback('stopSound', this.stopSound);
+                ExternalInterface.addCallback('getSoundPos', this.getSoundPos);
 
                 ExternalInterface.call("Impetus._flashLoadedCallback");
             }
         }
 
-        public function playNew(url:String):int
+        public function playSound(url:String, pos:int = 0):void
         {
-            return this.getSound(url).playNew().getId();
+            this.getSound(url).play(pos);
         }
 
-        public function playChannel(url:String):void
-        {
-            this.getSound(url).play();
-        }
-
-        public function stopChannel(url:String):void
+        public function stopSound(url:String):void
         {
             this.getSound(url).stop();
         }
 
-        public function setPosChannel(url:String, pos:int):void
-        {
-            this.getSound(url).setPos(pos);
-        }
-
-        public function getPosChannel(url:String, id:int):int
+        public function getSoundPos(url:String):int
         {
             return this.getSound(url).getPos();
         }
