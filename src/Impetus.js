@@ -28,6 +28,11 @@ ImpetusSound.prototype.getPos = function()
 {
     return flash.getSoundPos(this.url);
 };
+// function getState():Object
+ImpetusSound.prototype.getState = function()
+{
+    return flash.getSoundState(this.url);
+};
 // function getPeak():Object
 ImpetusSound.prototype.getPeak = function()
 {

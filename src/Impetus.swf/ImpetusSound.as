@@ -63,6 +63,15 @@ package
             return (this.channel != null)? channel.position : 0;
         }
 
+        public function getState():Object
+        {
+            return {
+                loaded: son.bytesLoaded / son.bytesTotal,
+                position: this.getPos(),
+                length: son.length / 1000 * son.bytesTotal / son.bytesLoaded
+            };
+        }
+
         public function getPeak():Object
         {
             return {

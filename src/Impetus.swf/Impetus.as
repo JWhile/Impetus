@@ -108,6 +108,11 @@ package
             return this.getSound(url).getPos();
         }
 
+        private function getSoundState(url:String):Object
+        {
+            return this.getSound(url).getState();
+        }
+
         private function getSoundPeak(url:String):Object
         {
             return this.getSound(url).getPeak();
