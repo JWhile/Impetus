@@ -63,7 +63,7 @@ package
             return {
                 loaded: this.sound.bytesLoaded / this.sound.bytesTotal,
                 position: (this.channel != null)? this.channel.position : 0,
-                length: this.sound.length * this.sound.bytesTotal / this.sound.bytesLoaded
+                length: this.sound.length * this.sound.bytesTotal / this.sound.bytesLoaded | 0
             };
         }
 
