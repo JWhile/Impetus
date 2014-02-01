@@ -2,8 +2,11 @@
 
 _v0.1.2 alpha_
 
-Moteur audio en AS3/JS.
+Audio en AS3/JS.
+
 _Simple, performent, souple, compatible._
+
+[Exemple & Utilisation](http://jwhile.github.io/#Impetus)
 
 ### License
 
