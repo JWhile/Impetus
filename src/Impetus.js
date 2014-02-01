@@ -23,11 +23,6 @@ ImpetusSound.prototype.stop = function()
 {
     flash.stopSound(this.url);
 };
-// function getPos():int
-ImpetusSound.prototype.getPos = function()
-{
-    return flash.getSoundPos(this.url);
-};
 // function getState():Object
 ImpetusSound.prototype.getState = function()
 {

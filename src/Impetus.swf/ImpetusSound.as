@@ -58,11 +58,6 @@ package
             this.channel = null;
         }
 
-        public function getPos():int
-        {
-            return (this.channel != null)? channel.position : 0;
-        }
-
         public function getState():Object
         {
             return {

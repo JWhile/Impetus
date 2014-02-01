@@ -25,7 +25,7 @@ package
                 ExternalInterface.addCallback('playSound', this.playSound);
                 ExternalInterface.addCallback('stopSound', this.stopSound);
 
-                ExternalInterface.addCallback('getSoundPos', this.getSoundPos);
+                ExternalInterface.addCallback('getSoundState', this.getSoundState);
                 ExternalInterface.addCallback('getSoundPeak', this.getSoundPeak);
 
                 ExternalInterface.addCallback('setSoundVolume', this.setSoundVolume);
@@ -101,11 +101,6 @@ package
         private function stopSound(url:String):void
         {
             this.getSound(url).stop();
-        }
-
-        private function getSoundPos(url:String):int
-        {
-            return this.getSound(url).getPos();
         }
 
         private function getSoundState(url:String):Object
