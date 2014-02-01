@@ -11,37 +11,49 @@ function ImpetusSound(url)
 // function getInfo():Object
 ImpetusSound.prototype.getInfo = function()
 {
-    return flash.getSoundInfo(this.url);
+    return (flash !== null)? flash.getSoundInfo(this.url) : {};
 };
 // function play():void
 ImpetusSound.prototype.play = function(pos)
 {
-    flash.playSound(this.url, pos);
+    if(flash !== null)
+    {
+        flash.playSound(this.url, pos);
+    }
 };
 // function stop():void
 ImpetusSound.prototype.stop = function()
 {
-    flash.stopSound(this.url);
+    if(flash !== null)
+    {
+        flash.stopSound(this.url);
+    }
 };
 // function getState():Object
 ImpetusSound.prototype.getState = function()
 {
-    return flash.getSoundState(this.url);
+    return (flash !== null)? flash.getSoundState(this.url) : {};
 };
 // function getPeak():Object
 ImpetusSound.prototype.getPeak = function()
 {
-    return flash.getSoundPeak(this.url);
+    return (flash !== null)? flash.getSoundPeak(this.url) : {};
 };
 // function setVolume(int volume):void
 ImpetusSound.prototype.setVolume = function(volume)
 {
-    flash.setSoundVolume(this.url, volume);
+    if(flash !== null)
+    {
+        flash.setSoundVolume(this.url, volume);
+    }
 };
 // function setBalance(int balance):void
 ImpetusSound.prototype.setBalance = function(balance)
 {
-    flash.setSoundBalance(this.url, balance);
+    if(flash !== null)
+    {
+        flash.setSoundBalance(this.url, balance);
+    }
 };
 
 // var sounds:Array<ImpetusSound>
@@ -77,13 +89,19 @@ Impetus.getSound = function(url)
 // static function Impetus.setDefaultVolume(int volume, boolean all = false):void
 Impetus.setDefaultVolume = function(volume, all)
 {
-    flash.setDefaultVolume(volume / 100, all);
+    if(flash !== null)
+    {
+        flash.setDefaultVolume(volume / 100, all);
+    }
 };
 
 // static function Impetus.setDefaultBalance(int balance, boolean all = false):void
 Impetus.setDefaultBalance = function(balance, all)
 {
-    flash.setDefaultBalance(balance / 100, all);
+    if(flash !== null)
+    {
+        flash.setDefaultBalance(balance / 100, all);
+    }
 };
 
 // static function Impetus.load(String swfUrl, function callback = null):Builder
