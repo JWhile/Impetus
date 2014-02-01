@@ -61,9 +61,9 @@ package
         public function getState():Object
         {
             return {
-                loaded: son.bytesLoaded / son.bytesTotal,
-                position: this.getPos(),
-                length: son.length / 1000 * son.bytesTotal / son.bytesLoaded
+                loaded: this.sound.bytesLoaded / this.sound.bytesTotal,
+                position: (this.channel != null)? this.channel.position : 0,
+                length: this.sound.length / 1000 * this.sound.bytesTotal / this.sound.bytesLoaded
             };
         }
 

@@ -23,10 +23,10 @@ ImpetusSound.prototype.stop = function()
 {
     flash.stopSound(this.url);
 };
-// function getPos():int
-ImpetusSound.prototype.getPos = function()
+// function getState():Object
+ImpetusSound.prototype.getState = function()
 {
-    return flash.getSoundPos(this.url);
+    return flash.getSoundState(this.url);
 };
 // function getPeak():Object
 ImpetusSound.prototype.getPeak = function()
