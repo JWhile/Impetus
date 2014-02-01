@@ -60,10 +60,12 @@ package
 
         public function getState():Object
         {
+            var load:Number = this.sound.bytesLoaded / this.sound.bytesTotal;
+
             return {
-                loaded: this.sound.bytesLoaded / this.sound.bytesTotal,
+                loaded: load,
                 position: (this.channel != null)? this.channel.position : 0,
-                length: this.sound.length * this.sound.bytesTotal / this.sound.bytesLoaded | 0
+                length: (load < 1)? this.sound.length * this.sound.bytesTotal / this.sound.bytesLoaded | 0 : this.sound.length | 0
             };
         }
 
