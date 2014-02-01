@@ -53,9 +53,12 @@ package
 
         public function stop():void
         {
-            this.channel.stop();
+            if(this.channel != null)
+            {
+                this.channel.stop();
 
-            this.channel = null;
+                this.channel = null;
+            }
         }
 
         public function getState():Object
@@ -95,7 +98,10 @@ package
 
         private function updateTransform():void
         {
-            this.channel.soundTransform = new SoundTransform(this.volume, this.balance);
+            if(this.channel != null)
+            {
+                this.channel.soundTransform = new SoundTransform(this.volume, this.balance);
+            }
         }
     }
 }
