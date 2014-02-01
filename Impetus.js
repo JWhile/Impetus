@@ -8,20 +8,25 @@ function ImpetusSound(url)
 {
     this.url = url; // :String
 
-    if(flash !== null)
-    {
-        flash.preloadSound(url);
-    }
+    this._preload();
 }
+// function _preload():void
+ImpetusSound.prototype._preload = function()
+{
+    if(Impetus.isLoaded)
+    {
+        flash.preloadSound(this.url);
+    }
+};
 // function getInfo():Object
 ImpetusSound.prototype.getInfo = function()
 {
-    return (flash !== null)? flash.getSoundInfo(this.url) : {};
+    return Impetus.isLoaded? flash.getSoundInfo(this.url) : {};
 };
 // function play():void
 ImpetusSound.prototype.play = function(pos)
 {
-    if(flash !== null)
+    if(Impetus.isLoaded)
     {
         flash.playSound(this.url, pos);
     }
@@ -29,7 +34,7 @@ ImpetusSound.prototype.play = function(pos)
 // function stop():void
 ImpetusSound.prototype.stop = function()
 {
-    if(flash !== null)
+    if(Impetus.isLoaded)
     {
         flash.stopSound(this.url);
     }
@@ -37,17 +42,17 @@ ImpetusSound.prototype.stop = function()
 // function getState():Object
 ImpetusSound.prototype.getState = function()
 {
-    return (flash !== null)? flash.getSoundState(this.url) : {};
+    return Impetus.isLoaded? flash.getSoundState(this.url) : {};
 };
 // function getPeak():Object
 ImpetusSound.prototype.getPeak = function()
 {
-    return (flash !== null)? flash.getSoundPeak(this.url) : {};
+    return Impetus.isLoaded? flash.getSoundPeak(this.url) : {};
 };
 // function setVolume(int volume):void
 ImpetusSound.prototype.setVolume = function(volume)
 {
-    if(flash !== null)
+    if(Impetus.isLoaded)
     {
         flash.setSoundVolume(this.url, volume);
     }
@@ -55,7 +60,7 @@ ImpetusSound.prototype.setVolume = function(volume)
 // function setBalance(int balance):void
 ImpetusSound.prototype.setBalance = function(balance)
 {
-    if(flash !== null)
+    if(Impetus.isLoaded)
     {
         flash.setSoundBalance(this.url, balance);
     }
@@ -94,7 +99,7 @@ Impetus.getSound = function(url)
 // static function Impetus.setDefaultVolume(int volume, boolean all = false):void
 Impetus.setDefaultVolume = function(volume, all)
 {
-    if(flash !== null)
+    if(Impetus.isLoaded)
     {
         flash.setDefaultVolume(volume / 100, all);
     }
@@ -103,7 +108,7 @@ Impetus.setDefaultVolume = function(volume, all)
 // static function Impetus.setDefaultBalance(int balance, boolean all = false):void
 Impetus.setDefaultBalance = function(balance, all)
 {
-    if(flash !== null)
+    if(Impetus.isLoaded)
     {
         flash.setDefaultBalance(balance / 100, all);
     }
@@ -112,7 +117,7 @@ Impetus.setDefaultBalance = function(balance, all)
 // static function Impetus.getSpectrum(boolean fft = false, int length = 512):Array<float>
 Impetus.getSpectrum = function(fft, length)
 {
-    return (flash !== null)? flash.getSpectrum(fft, length) : [];
+    return (Impetus.isLoaded)? flash.getSpectrum(fft, length) : [];
 };
 
 // static function Impetus.load(String swfUrl, function callback = null):Builder
@@ -143,6 +148,11 @@ Impetus.load = function(swfUrl, callback)
 Impetus._flashLoadedCallback = function()
 {
     Impetus.isLoaded = true;
+
+    for(var i = 0; i < sounds.length; ++i)
+    {
+        sounds[i]._preload();
+    }
 
     if(typeof loadCallback === 'function')
     {
