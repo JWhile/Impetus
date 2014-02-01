@@ -3,6 +3,8 @@ package
     import flash.display.Sprite;
     import flash.external.ExternalInterface;
     import flash.media.ID3Info;
+    import flash.media.SoundMixer;
+    import flash.utils.ByteArray;
 
     public class Impetus extends Sprite
     {
@@ -37,6 +39,8 @@ package
                 ExternalInterface.addCallback('setDefaultVolume', this.setDefaultVolume);
                 ExternalInterface.addCallback('setDefaultBalance', this.setDefaultBalance);
 
+                ExternalInterface.addCallback('getSpectrum', this.getSpectrum);
+
                 ExternalInterface.call("Impetus._flashLoadedCallback");
             }
         }
@@ -69,6 +73,22 @@ package
                     this.sounds[i].setBalance(balance);
                 }
             }
+        }
+
+        public function getSpectrum(fft:Boolean = false, length:int = 512):Vector.<Number>
+        {
+            var bytes:ByteArray = new ByteArray();
+
+            SoundMixer.computeSpectrum(bytes, fft);
+
+            var spectrum:Vector.<Number> = new Vector.<Number>;
+
+            for(var i:int = 0; i < length; i++)
+            {
+                spectrum.push(bytes.readFloat());
+            }
+
+            return spectrum;
         }
 
         public function getSound(url:String):ImpetusSound

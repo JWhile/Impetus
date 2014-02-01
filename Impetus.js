@@ -109,6 +109,12 @@ Impetus.setDefaultBalance = function(balance, all)
     }
 };
 
+// static function Impetus.getSpectrum(boolean fft = false, int length = 512):Array<float>
+Impetus.getSpectrum = function(fft, length)
+{
+    return (flash !== null)? flash.getSpectrum(fft, length) : [];
+};
+
 // static function Impetus.load(String swfUrl, function callback = null):Builder
 Impetus.load = function(swfUrl, callback)
 {
