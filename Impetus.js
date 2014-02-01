@@ -7,6 +7,11 @@ var Impetus = {};
 function ImpetusSound(url)
 {
     this.url = url; // :String
+
+    if(flash !== null)
+    {
+        flash.preloadSound(url);
+    }
 }
 // function getInfo():Object
 ImpetusSound.prototype.getInfo = function()

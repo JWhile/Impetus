@@ -20,6 +20,8 @@ package
 
             if(ExternalInterface.available)
             {
+                ExternalInterface.addCallback('preloadSound', this.preloadSound);
+
                 ExternalInterface.addCallback('getSoundInfo', this.getSoundInfo);
 
                 ExternalInterface.addCallback('playSound', this.playSound);
@@ -86,6 +88,11 @@ package
             this.sounds.push(s);
 
             return s;
+        }
+
+        private function preloadSound(url:String):void
+        {
+            this.getSound(url);
         }
 
         private function getSoundInfo(url:String):ID3Info
