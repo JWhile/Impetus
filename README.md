@@ -1,6 +1,6 @@
 # Impetus
 
-_v0.1.4 alpha_
+_v1.0.0_
 
 Audio en AS3/JS.
 

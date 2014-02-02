@@ -1,3 +1,11 @@
+/**
+ * Impetus
+ *
+ * https://github.com/JWhile/Impetus
+ *
+ * version 1.0.0
+ */
+
 package
 {
     import flash.media.ID3Info
