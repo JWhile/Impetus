@@ -6,6 +6,10 @@ Audio en AS3/JS.
 
 _Simple, performent, souple, compatible._
 
+### Utilisation
+
+Impetus requière [Builder.js](https://github.com/JWhile/Builder.js) (Builder.js doit être inclu avant Impetus)
+
 [Exemple & Utilisation](http://jwhile.github.io/#Impetus)
 
 ### License
