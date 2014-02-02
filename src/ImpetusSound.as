@@ -110,7 +110,12 @@ package
         {
             if(this.channel != null)
             {
-                this.channel.soundTransform = new SoundTransform(this.volume, this.balance);
+                var transform:SoundTransform = this.channel.soundTransform;
+
+                transform.volume = this.volume;
+                transform.pan = this.balance;
+
+                this.channel.soundTransform = transform;
             }
         }
     }
