@@ -33,6 +33,8 @@ package
 
             this.globalVolume = 1;
 
+            SoundMixer.bufferTime = 0;
+
             if(ExternalInterface.available)
             {
                 ExternalInterface.addCallback('preloadSound', this.preloadSound);
