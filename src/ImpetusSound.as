@@ -49,14 +49,16 @@ package
 
         public function play(pos:int):void
         {
-            if(this.channel != null)
-            {
-                this.channel.stop();
-            }
+            var old:SoundChannel = this.channel;
 
             this.channel = sound.play(pos);
 
             this.updateTransform();
+
+            if(old != null)
+            {
+                old.stop();
+            }
         }
 
         public function stop():void
