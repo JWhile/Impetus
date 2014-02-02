@@ -46,6 +46,8 @@ package
 
                 ExternalInterface.addCallback('setGlobalVolume', this.setGlobalVolume);
 
+                ExternalInterface.addCallback('getStats', this.getStats);
+
                 ExternalInterface.addCallback('getSpectrum', this.getSpectrum);
 
                 ExternalInterface.call("Impetus._flashLoadedCallback");
@@ -87,6 +89,16 @@ package
             this.globalVolume = volume;
 
             SoundMixer.soundTransform = new SoundTransform(volume, 0);
+        }
+
+        public function getStats():Object
+        {
+            return {
+                globalVolume: this.globalVolume,
+                defaultVolume: this.defaultVolume,
+                defaultBalance: this.defaultBalance,
+                sounds: this.sounds.length
+            };
         }
 
         public function getSpectrum(fft:Boolean = false, length:int = 256):Object

@@ -123,6 +123,12 @@ Impetus.setGlobalVolume = function(volume)
     }
 };
 
+// static function Impetus.getStats():void
+Impetus.getStats = function()
+{
+    return Impetus.isLoaded? flash.getStats() : {};
+};
+
 // static function Impetus.getSpectrum(boolean fft = false, int length = 256):Object
 Impetus.getSpectrum = function(fft, length)
 {
