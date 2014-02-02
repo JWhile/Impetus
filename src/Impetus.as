@@ -4,6 +4,7 @@ package
     import flash.external.ExternalInterface;
     import flash.media.ID3Info;
     import flash.media.SoundMixer;
+    import flash.media.SoundTransform;
     import flash.utils.ByteArray;
 
     public class Impetus extends Sprite
@@ -13,12 +14,16 @@ package
         private var defaultVolume:Number;
         private var defaultBalance:Number;
 
+        private var globalVolume:Number;
+
         public function Impetus():void
         {
             this.sounds = new Vector.<ImpetusSound>();
 
             this.defaultVolume = 1;
             this.defaultBalance = 0;
+
+            this.globalVolume = 1;
 
             if(ExternalInterface.available)
             {
@@ -38,6 +43,8 @@ package
 
                 ExternalInterface.addCallback('setDefaultVolume', this.setDefaultVolume);
                 ExternalInterface.addCallback('setDefaultBalance', this.setDefaultBalance);
+
+                ExternalInterface.addCallback('setGlobalVolume', this.setGlobalVolume);
 
                 ExternalInterface.addCallback('getSpectrum', this.getSpectrum);
 
@@ -73,6 +80,13 @@ package
                     this.sounds[i].setBalance(balance);
                 }
             }
+        }
+
+        public function setGlobalVolume(volume:Number):void
+        {
+            this.globalVolume = volume;
+
+            SoundMixer.soundTransform = new SoundTransform(volume, 0);
         }
 
         public function getSpectrum(fft:Boolean = false, length:int = 256):Object

@@ -96,21 +96,30 @@ Impetus.getSound = function(url)
     return s;
 };
 
-// static function Impetus.setDefaultVolume(int volume, boolean all = false):void
+// static function Impetus.setDefaultVolume(float volume, boolean all = false):void
 Impetus.setDefaultVolume = function(volume, all)
 {
     if(Impetus.isLoaded)
     {
-        flash.setDefaultVolume(volume / 100, all);
+        flash.setDefaultVolume(volume, all);
     }
 };
 
-// static function Impetus.setDefaultBalance(int balance, boolean all = false):void
+// static function Impetus.setDefaultBalance(float balance, boolean all = false):void
 Impetus.setDefaultBalance = function(balance, all)
 {
     if(Impetus.isLoaded)
     {
-        flash.setDefaultBalance(balance / 100, all);
+        flash.setDefaultBalance(balance, all);
+    }
+};
+
+// static function Impetus.setGlobalVolume(float volume):void
+Impetus.setGlobalVolume = function(volume)
+{
+    if(Impetus.isLoaded)
+    {
+        flash.setGlobalVolume(volume);
     }
 };
 
