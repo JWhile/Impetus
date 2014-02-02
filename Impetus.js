@@ -114,10 +114,10 @@ Impetus.setDefaultBalance = function(balance, all)
     }
 };
 
-// static function Impetus.getSpectrum(boolean fft = false, int length = 512):Object
+// static function Impetus.getSpectrum(boolean fft = false, int length = 256):Object
 Impetus.getSpectrum = function(fft, length)
 {
-    return (Impetus.isLoaded)? flash.getSpectrum(fft, (typeof length !== 'number')? 512 : length) : [];
+    return (Impetus.isLoaded)? flash.getSpectrum(fft, (typeof length !== 'number')? 256 : length) : [];
 };
 
 // static function Impetus.load(String swfUrl, function callback = null):Builder

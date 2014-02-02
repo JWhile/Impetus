@@ -75,20 +75,33 @@ package
             }
         }
 
-        public function getSpectrum(fft:Boolean = false, length:int = 512):Vector.<Number>
+        public function getSpectrum(fft:Boolean = false, length:int = 256):Object
         {
             var bytes:ByteArray = new ByteArray();
 
             SoundMixer.computeSpectrum(bytes, fft);
 
-            var spectrum:Vector.<Number> = new Vector.<Number>;
+            var leftSpectrum:Vector.<Number> = new Vector.<Number>;
+            var rightSpectrum:Vector.<Number> = new Vector.<Number>;
 
-            for(var i:int = 0; i < length; i++)
+            var i:int = 0;
+
+            for(i = 0; i < length; i++)
             {
-                spectrum.push(bytes.readFloat());
+                leftSpectrum.push(bytes.readFloat());
             }
 
-            return spectrum;
+            bytes.position = 256;
+
+            for(i = 0; i < length; i++)
+            {
+                rightSpectrum.push(bytes.readFloat());
+            }
+
+            return {
+                left: leftSpectrum,
+                right: rightSpectrum
+            };
         }
 
         public function getSound(url:String):ImpetusSound
